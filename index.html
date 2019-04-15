@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h4>JS lesson</h4>
+    <form action="" class="form">
+        <input type="text" class="input">
+        <input type="submit">
+    </form>
+    <ul class="messages">
+
+    </ul>
+    <p class="err"></p>
+
+    <script>
+        const newItem = document.querySelector(".input")
+        // console.log(newItem.value)
+        const form = document.querySelector(".form")
+        const err = document.querySelector(".err")
+        const messages = document.querySelector(".messages")
+
+        const addItem = () => {
+            form.addEventListener("submit", e => {
+                e.preventDefault()
+                if (newItem.value === "") {
+                    err.textContent = "文字を入力してね"
+                    return
+                } else {
+                    err.textContent = ""
+                    const li = document.createElement("li")
+                    const span = document.createElement("button")
+                    li.textContent = newItem.value
+                    span.textContent = "削除"
+                    messages.appendChild(li)
+                    messages.appendChild(span)
+                    newItem.value = ""
+                }
+            })
+        }
+
+        const btn = document.querySelector("button")
+        const removeItem = () => {
+            btn.addEventListener("click", e => {
+                e.preventDefault()
+                console.log("Aaaaaaaaa")
+                // messages.removeChild(li)
+            })
+        }
+        addItem()
+
+        removeItem()
+    </script>
+
+</body>
+
+</html>
